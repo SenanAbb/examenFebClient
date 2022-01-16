@@ -1,6 +1,6 @@
 <?php
     session_start();
-    $res = file_get_contents("http://https://blablacariw.herokuapp.com//conversaciones/".$_GET['id']);
+    $res = file_get_contents("https://blablacariw.herokuapp.com/conversaciones/".$_GET['id']);
     $data = json_decode($res);
     // $resViajes = file_get_contents("http://https://blablacariw.herokuapp.com//listaviajes");
     // $dataViajes = json_decode($resViajes);
@@ -32,7 +32,7 @@
     <form action="crear_conversacion.php" method="POST">
         <select name="select">
                 <?php foreach ($data->data->notusuarios as $notusuario){ ?>
-                    <option value="<?php $notusuario->_id?>"><?php echo $notusuario->nombre ?></option>
+                    <option value="<?php echo $notusuario->_id?>"><?php echo $notusuario->nombre ?></option>
                 <?php } ?>
         </select>
         <input type="hidden" value="<?php echo $notusuario->_id?>" name="id_ajeno">

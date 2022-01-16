@@ -1,8 +1,8 @@
 <?php
     session_start();
-    $res = file_get_contents("http://https://blablacariw.herokuapp.com//");
+    $res = file_get_contents("https://blablacariw.herokuapp.com/");
     $dataUsers = json_decode($res);
-    $resViajes = file_get_contents("http://https://blablacariw.herokuapp.com//listaviajes");
+    $resViajes = file_get_contents("https://blablacariw.herokuapp.com/listaviajes");
     $dataViajes = json_decode($resViajes);
 
     if(isset($_SESSION['server_msg'])){
@@ -15,7 +15,7 @@
         $email = $_SESSION['usuario']['email'];
 
         // Compruebo si el email existe en la BD
-        $data = file_get_contents("http://https://blablacariw.herokuapp.com//findUserByEmail/" . $email);
+        $data = file_get_contents("https://blablacariw.herokuapp.com/findUserByEmail/" . $email);
         $user = json_decode($data);
 
         // Si existe -> me traigo su información y lo guardo
@@ -44,6 +44,8 @@
     }
     
     include 'includes/viajes.php';
+
+    include 'includes/conversaciones.php';
     
     include 'includes/footer.php';
     
