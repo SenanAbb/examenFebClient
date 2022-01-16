@@ -11,17 +11,18 @@
 <body>
         <header>
             <div class="container">
+                <img src="./resources/logo.svg" height="87" width="100"alt="Imagen logo">
+                
                 <div class="contenido-header">
-                    <img src="./resources/logo.svg" height="87" width="100"alt="Imagen logo">
+                    <h1>Hola <a href="../myaccount.php"><?php echo $_SESSION['usuario']->nombre?></a></h1>    
                     <div class="d-flex justify-content-center py-3">
                         <ul class="nav nav-pills">
                             
-
                             <li class="nav-item">
-                                <a href="#" class="nav-link">Buscar</a>
+                                <a href="../viaje/crear_viaje.php" class="nav-link">Buscar</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">Publicar viaje</a>
+                                <a href="../viaje/crear_viaje.php" class="nav-link">Publicar viaje</a>
                             </li>
                             <?php 
                             
