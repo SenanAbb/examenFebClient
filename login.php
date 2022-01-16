@@ -2,15 +2,19 @@
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-    $data = file_get_contents("https://blablacariw.herokuapp.com/findUserByEmail/" . $_POST['email']);
+    $data = file_get_contents("http://localhost:3000/findUserByEmail/" . $_POST['email']);
     $user = json_decode($data);
 
     if (!empty($user->data->usuarios)){
         //TO-DO: Comprobacion del password
-        unset($user->data->usuarios[0]->password);
-        $_SESSION['usuario'] = $user->data->usuarios[0]; 
-        $_SESSION['login'] = true;
-        header('Location: ./index.php');
+        if (strcmp($user->data->usuarios[0]->passord, $_POST['password'])) {
+            unset($user->data->usuarios[0]->password);
+            $_SESSION['usuario'] = $user->data->usuarios[0]; 
+            $_SESSION['login'] = true;
+            header('Location: ./index.php');
+        }else{
+            echo "El usuario no existe";
+        }
     }else{
         echo "El usuario no existe";
     }

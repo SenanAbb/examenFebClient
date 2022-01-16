@@ -1,9 +1,9 @@
 <?php
     session_start();
-    $res = file_get_contents("https://blablacariw.herokuapp.com/weather/realtime/".$_GET['location']);
+    $res = file_get_contents("http://localhost:3000/weather/realtime/".$_GET['location']);
     $data = json_decode($res);
 
-    include '../includes/header.php';
+    include '../../includes/header.php';
 ?>
 <div class="d-flex justify-content-around">
     <h1><?php echo $data->location->name?>, <?php echo $data->location->region?>, <?php echo $data->location->country?></h1>
