@@ -1,7 +1,7 @@
 <?php
     session_start();
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $url = "http://https://blablacariw.herokuapp.com//travels/edit/".$_POST['id'];
+        $url = "http://localhost:3000/travels/edit/".$_POST['id'];
         
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -38,11 +38,10 @@
         header('Location: index.php');
     }
     else {
-        $res = file_get_contents("http://https://blablacariw.herokuapp.com//travels/edit/".$_GET['id']);
+        $res = file_get_contents("http://localhost:3000/travels/edit/".$_GET['id']);
         $data = json_decode($res); 
-        $resUsers = file_get_contents("http://https://blablacariw.herokuapp.com//");
+        $resUsers = file_get_contents("http://localhost:3000/");
         $dataUsers = json_decode($resUsers);
-        include '../includes/header.php';
     }
 ?>
 
@@ -54,7 +53,7 @@
         echo "<br>";
         foreach($data->data->viaje[0]->id_pasajeros as $pasajero){
             if(!empty($pasajero)){
-                $resAux = file_get_contents("http://https://blablacariw.herokuapp.com//users/edit/".$pasajero);
+                $resAux = file_get_contents("http://localhost:3000/users/edit/".$pasajero);
                 $dataAux = json_decode($resAux); 
                 ?>
                 <input type="checkbox" name="id_pasajeros[]" value="<?php echo $pasajero ?>" checked> <?php echo $dataAux->data->usuario[0]->nombre. " ".$dataAux->data->usuario[0]->apellido; ?> <br>
@@ -71,7 +70,7 @@
     foreach($dataUsers->data->usuarios as $usuario){
         if(!in_array($usuario->_id, $data->data->viaje[0]->id_pasajeros) && $data->data->viaje[0]->id_conductor != $usuario->_id){
             ?>
-            <input type="checkbox" name="id_pasajeros[]" value="<?php echo $usuario->_id ?>" > <?php echo $usuario->nombre. " ".$usuario->apellido; ?> <br>
+            <input type="checkbox" name="id_pasajeros[]" value="<?php echo $usuario->_id ?>" > <?php if (isset($usuario->apellido)){ echo $usuario->nombre." ".$usuario->apellido;} else {echo $usuario->nombre;} ?> <br>
         <?php    
         } 
     }
@@ -85,4 +84,4 @@
     <input type="submit" value="Editar">
 </form>
 
-<?php include './includes/footer.php' ?>
+<?php include '../includes/footer.php' ?>
