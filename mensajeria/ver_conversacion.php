@@ -33,7 +33,6 @@
     } else{
         $res = file_get_contents("https://blablacariw.herokuapp.com/conversacion?id1=".$_GET['id_local']."&id2=".$_GET['id_ajeno']);
         $data = json_decode($res);
-        var_dump($res);
         $resUser = file_get_contents("https://blablacariw.herokuapp.com/users/edit/".$_GET['id_ajeno']);
         $dataUser = json_decode($resUser);
     }
