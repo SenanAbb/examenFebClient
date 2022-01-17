@@ -15,7 +15,9 @@
             "fecha_salida" => strtotime($_POST['fecha_salida']),
             "hora_salida" => strtotime($_POST['hora_salida']),            
             "lugar_salida" => $_POST['lugar_salida'],
-            "lugar_llegada" => $_POST['lugar_llegada']
+            "lugar_llegada" => $_POST['lugar_llegada'],
+            "price" => $_POST['price'],
+            "currency" => $_POST['currency']
         );
 
         $json = json_encode($data);

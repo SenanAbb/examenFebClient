@@ -1,5 +1,9 @@
 <?php
-session_start();
+    session_start();
+    $res = file_get_contents("http://localhost:3000/");
+    $dataUsers = json_decode($res);
+    $resViajes = file_get_contents("http://localhost:3000/listaviajes");
+    $dataViajes = json_decode($resViajes);
 
 if (isset($_SESSION['server_msg'])) {
     echo $_SESSION['server_msg'];
@@ -41,8 +45,18 @@ include 'includes/header.php';
     </div>
 </div>
 
-<?php
-
-include 'includes/footer.php';
+    include 'includes/buscador_incidencias.php';
+    
+    include 'includes/mapa.php';
+    
+    if ($_SESSION['usuario']->admin != null){
+        include 'includes/usuarios.php';
+    }
+    
+    include 'includes/viajes.php';
+    
+    include 'includes/footer.php';
+    
+    include 'includes/footer.php';
 
 ?>
