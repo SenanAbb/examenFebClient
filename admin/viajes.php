@@ -1,6 +1,6 @@
 <?php
 session_start();
-$dataViajes = file_get_contents("http://localhost:3000/listaviajes");
+$dataViajes = file_get_contents("https://blablacariw.herokuapp.com/listaviajes");
 $viajes = json_decode($dataViajes)->data->viajes;
 
 include './includes/header.php';

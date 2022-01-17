@@ -1,5 +1,5 @@
 <?php
-$dataUsers = file_get_contents("http://localhost:3000/");
+$dataUsers = file_get_contents("https://blablacariw.herokuapp.com/");
 $users = json_decode($dataUsers)->data->usuarios;
 
 include './includes/header.php';
