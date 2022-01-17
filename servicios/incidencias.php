@@ -7,7 +7,11 @@
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($_POST['boton'] === '1') {
             $autonomia = $_POST['qa'];
+<<<<<<< HEAD
             $res = file_get_contents("https://blablacariw.herokuapp.com//incidencia/autonomia/".$autonomia);
+=======
+            $res = file_get_contents("https://blablacariw.herokuapp.com/incidencia/autonomia/".$autonomia);
+>>>>>>> 46687286e0d79afa105bf5d92cf4dd17f2aac34d
             $data = json_decode($res);
             if (isset($data->features) && !empty($data->features)) {
                 $msg = "Incidencias en autonomia ".$autonomia;
@@ -17,7 +21,11 @@
             }
         } else if ($_POST['boton'] === '2') {
             $provincia = $_POST['qp'];
+<<<<<<< HEAD
             $res = file_get_contents("https://blablacariw.herokuapp.com//incidencia/provincia/".$provincia);
+=======
+            $res = file_get_contents("https://blablacariw.herokuapp.com/incidencia/provincia/".$provincia);
+>>>>>>> 46687286e0d79afa105bf5d92cf4dd17f2aac34d
             $data = json_decode($res);
             if(isset($data->features) && !empty($data->features)) {
                 $msg = "Incidencias en provincia ".$provincia;
@@ -27,7 +35,11 @@
             }
         } else if ($_POST['boton'] === '3') {
             $carretera = $_POST['qc'];
+<<<<<<< HEAD
             $res = file_get_contents("https://blablacariw.herokuapp.com//incidencia/carretera/".$carretera);
+=======
+            $res = file_get_contents("https://blablacariw.herokuapp.com/incidencia/carretera/".$carretera);
+>>>>>>> 46687286e0d79afa105bf5d92cf4dd17f2aac34d
             $data = json_decode($res);
             if(isset($data->features) && !empty($data->features)) {
                 $msg = "Incidencias en carretera ".$carretera;

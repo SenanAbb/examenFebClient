@@ -1,8 +1,15 @@
 <?php
+<<<<<<< HEAD
 $dataUsers = file_get_contents("https://blablacariw.herokuapp.com//");
 $users = json_decode($dataUsers)->data->usuarios;
 
 $dataViajes = file_get_contents("https://blablacariw.herokuapp.com//listaviajes");
+=======
+$dataUsers = file_get_contents("https://blablacariw.herokuapp.com/");
+$users = json_decode($dataUsers)->data->usuarios;
+
+$dataViajes = file_get_contents("https://blablacariw.herokuapp.com/listaviajes");
+>>>>>>> 46687286e0d79afa105bf5d92cf4dd17f2aac34d
 $viajes = json_decode($dataViajes)->data->viajes;
 
 include './includes/header.php';

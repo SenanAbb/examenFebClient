@@ -12,7 +12,11 @@ if (isset($_GET['provincia']) && $_GET['provincia'] !== ''){
 }
 
 if ($busqueda !== ''){
+<<<<<<< HEAD
     $url = 'https://blablacariw.herokuapp.com//incidencia/' . $busqueda . '/' . strtoupper($_GET[$busqueda]);
+=======
+    $url = 'https://blablacariw.herokuapp.com/incidencia/' . $busqueda . '/' . strtoupper($_GET[$busqueda]);
+>>>>>>> 46687286e0d79afa105bf5d92cf4dd17f2aac34d
 
     $res = file_get_contents($url);
     $data = json_decode($res);
