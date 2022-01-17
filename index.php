@@ -23,7 +23,7 @@ if (isset($_SESSION['usuario'])) {
         // Si no existe -> lo inserto en la BD e inicializo sus valores
         header('Location: /funciones/nuevo_usuario.php');
     }
-}
+    error_reporting(E_ERROR | E_PARSE);
 
 include 'includes/header.php';
 

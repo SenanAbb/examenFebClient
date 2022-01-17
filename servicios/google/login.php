@@ -16,7 +16,7 @@ $client->setRedirectUri($redirectUrl);
 $client->addScope('profile');
 $client->addScope('email');
 
-if (isset($_GET['code'])) {
+if(isset($_GET['code'])){
     $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
     $client->setAccessToken($token);
 
@@ -42,6 +42,7 @@ if (isset($_GET['code'])) {
 
     // Redirijo a index
     header('Location: /index.php');
-} else {
+
+}else{
     header('Location: ' . $client->createAuthUrl());
 }
