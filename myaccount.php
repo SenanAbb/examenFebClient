@@ -2,17 +2,10 @@
     session_start();
     if (isset($_SESSION['login'])) {
         $user = (array) $_SESSION['usuario'];
-<<<<<<< HEAD
-        $resViajes = file_get_contents("https://blablacariw.herokuapp.com//viajesconductor/".$user['_id']);
-        $dataViajes = json_decode($resViajes);
-
-        $resViajesRes = file_get_contents("https://blablacariw.herokuapp.com//viajespasajero/".$user['_id']);
-=======
         $resViajes = file_get_contents("https://blablacariw.herokuapp.com/viajesconductor/".$user['_id']);
         $dataViajes = json_decode($resViajes);
 
         $resViajesRes = file_get_contents("https://blablacariw.herokuapp.com/viajespasajero/".$user['_id']);
->>>>>>> 46687286e0d79afa105bf5d92cf4dd17f2aac34d
         $dataViajesRes = json_decode($resViajesRes);
 
         include "./includes/header.php";

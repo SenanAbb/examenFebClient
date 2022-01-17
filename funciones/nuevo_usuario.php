@@ -1,18 +1,10 @@
 <?php
 session_start();
-<<<<<<< HEAD
-$nombre = $_SESSION['usuario']->nombre;
-$apellido = $_SESSION['usuario']->apellido;
-$email = $_SESSION['usuario']->email;
-
-$url = 'https://blablacariw.herokuapp.com//users/add';
-=======
 $nombre = $_SESSION['usuario']->usuario;
 $apellido = $_SESSION['usuario']->apellido;
 $email = $_SESSION['usuario']->email;
 
 $url = 'https://blablacariw.herokuapp.com/users/add';
->>>>>>> 46687286e0d79afa105bf5d92cf4dd17f2aac34d
     
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $url);

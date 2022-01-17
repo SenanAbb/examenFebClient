@@ -1,9 +1,5 @@
 <?php
-<<<<<<< HEAD
-$dataUsers = file_get_contents("https://blablacariw.herokuapp.com//");
-=======
 $dataUsers = file_get_contents("https://blablacariw.herokuapp.com/");
->>>>>>> 46687286e0d79afa105bf5d92cf4dd17f2aac34d
 $users = json_decode($dataUsers)->data->usuarios;
 
 include './includes/header.php';
