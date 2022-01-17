@@ -61,7 +61,6 @@
     }
     ?>
 
-
     <input value="<?php echo $data->data->viaje[0]->fecha_salida?>" name="fecha_salida">
     <input value="<?php echo $data->data->viaje[0]->hora_salida?>" name="hora_salida">
     <input value="<?php echo $data->data->viaje[0]->lugar_salida?>" name="lugar_salida">

@@ -18,7 +18,12 @@
                 <div class="d-flex justify-content-center py-3">
                     <ul class="nav nav-pills">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Buscar</a>
+                            <h1><a href="../index.php">Home</a></h1>
+                        </li>
+                        <li class="nav-item">
+                            <?php if (!isset($_SESSION['usuario']->admin)) {?>
+                                <h1><a href="../myaccount.php">Mi Perfil</a></h1>    
+                            <?php }?>
                         </li>
                         <li class="nav-item">
                             <a href="../viaje/crear_viaje.php" class="nav-link">Publicar viaje</a>
