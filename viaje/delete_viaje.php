@@ -2,7 +2,11 @@
     session_start();
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+<<<<<<< HEAD
         $url = 'https://blablacariw.herokuapp.com//travels/delete';
+=======
+        $url = 'https://blablacariw.herokuapp.com/travels/delete';
+>>>>>>> 46687286e0d79afa105bf5d92cf4dd17f2aac34d
         
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
