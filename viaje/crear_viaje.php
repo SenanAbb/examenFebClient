@@ -34,11 +34,7 @@
         header('Location: ../index.php');
     }
     else {
-<<<<<<< HEAD
-        $res = file_get_contents("https://blablacariw.herokuapp.com//users/edit/".$_SESSION['usuario']->_id);
-=======
         $res = file_get_contents("https://blablacariw.herokuapp.com/users/edit/".$_SESSION['usuario']->_id);
->>>>>>> 46687286e0d79afa105bf5d92cf4dd17f2aac34d
         $nombre = json_decode($res)->data->usuario[0]->nombre; 
         include "../includes/header.php";
     }
