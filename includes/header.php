@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,35 +9,43 @@
     <link rel="stylesheet" href="css/styles.css">
     <title>BlablacarIW</title>
 </head>
-<body>
-        <header>
-            <div class="container">
-                <div class="contenido-header">
-                    <img src="./resources/logo.svg" height="87" width="100"alt="Imagen logo">
-                    <div class="d-flex justify-content-center py-3">
-                        <ul class="nav nav-pills">
-                            
 
+<body>
+    <nav>
+        <div class="container">
+            <div class="contenido-header">
+                <img src="./resources/logo.svg" alt="Imagen logo">
+                <div class="d-flex justify-content-center py-3">
+                    <ul class="nav nav-pills">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Buscar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../viaje/crear_viaje.php" class="nav-link">Publicar viaje</a>
+                        </li>
+                        <?php
+
+                        if (!isset($_SESSION['login'])) {
+                            header('Location: ../login.php');
+                        } else if (isset($_SESSION['login']) && isset($_SESSION['admin'])) {
+                        ?>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">Buscar</a>
+                                <a href="admin/admin.php" class="nav-link">Panel de administración</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">Publicar viaje</a>
+                                <a href="logout.php" class="nav-link">Cerrar sesión</a>
                             </li>
-                            <?php 
-                            
-                            if (!isset($_SESSION['login'])){
-                                header ('Location: ../login.php');
-                            }else{?>
-                                <li class="nav-item">
-                                    <a href="logout.php" class="nav-link">Cerrar sesión</a>
-                                </li>
-                            <?php
-                            }
-                            ?>
-                        </ul>
-                    </div>
+                        <?php
+                        } else { ?>
+                            <li class="nav-item">
+                                <a href="logout.php" class="nav-link">Cerrar sesión</a>
+                            </li>
+                        <?php
+                        }
+                        ?>
+                    </ul>
                 </div>
             </div>
-        </header>
+        </div>
+    </nav>
     </div>

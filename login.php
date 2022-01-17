@@ -1,21 +1,27 @@
 <?php
 session_start();
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $data = file_get_contents("http://localhost:3000/findUserByEmail/" . $_POST['email']);
     $user = json_decode($data);
 
-    if (!empty($user->data->usuarios)){
+    if (!empty($user->data->usuarios)) {
         //TO-DO: Comprobacion del password
-        if (strcmp($user->data->usuarios[0]->passord, $_POST['password'])) {
+        if ($user->data->usuarios[0]->password === $_POST['password']) {
             unset($user->data->usuarios[0]->password);
-            $_SESSION['usuario'] = $user->data->usuarios[0]; 
+            $_SESSION['usuario'] = $user->data->usuarios[0];
+
             $_SESSION['login'] = true;
+
+            if ($_POST['email'] === 'pruebaparaingweb@gmail.com') {
+                $_SESSION['admin'] = true;
+            }
+
             header('Location: ./index.php');
-        }else{
+        } else {
             echo "El usuario no existe";
         }
-    }else{
+    } else {
         echo "El usuario no existe";
     }
 }
@@ -24,6 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -48,14 +55,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
                         <input type="text" name="password" required>
                     </div>
                 </div>
-                
+
                 <div class="login-botones">
                     <button type="submit" class="button blue-button">Iniciar sesión</button>
                     <button onclick="window.location.href='./servicios/google/login.php'" class="button red-button">Google</a>
-                </div>    
+                </div>
             </form>
-            <a href="./usuario/crear_usuario.php">Registrarse</a> 
+            <a href="./registro.php">Registrarse</a>
         </div>
     </div>
 </body>
-

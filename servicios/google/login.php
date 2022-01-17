@@ -23,11 +23,17 @@ if (isset($_GET['code'])) {
     $gauth = new Google_Service_Oauth2($client);
     $google_info = $gauth->userinfo->get();
 
-    $usuario = array(
+    $original = array(
         "nombre" => $google_info->givenName,
         "apellido" => $google_info->familyName,
         "email" => $google_info->email
     );
+
+    $usuario = new stdClass();
+
+    foreach ($original as $key => $value){
+        $usuario->$key = $value;
+    }
 
     // Almaceno en la sesión el login
     $_SESSION['login'] = true;

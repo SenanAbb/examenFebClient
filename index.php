@@ -1,9 +1,5 @@
 <?php
 session_start();
-$res = file_get_contents("http://localhost:3000/");
-$dataUsers = json_decode($res);
-$resViajes = file_get_contents("http://localhost:3000/listaviajes");
-$dataViajes = json_decode($resViajes);
 
 if (isset($_SESSION['server_msg'])) {
     echo $_SESSION['server_msg'];
@@ -11,8 +7,8 @@ if (isset($_SESSION['server_msg'])) {
 }
 error_reporting(E_ERROR | E_PARSE);
 
-if (isset($_SESSION['usuario']) && isset($_SESSION['google_login'])) {
-    $email = $_SESSION['usuario']['email'];
+if (isset($_SESSION['usuario'])) {
+    $email = $_SESSION['usuario']->email;
 
     // Compruebo si el email existe en la BD
     $data = file_get_contents("http://localhost:3000/findUserByEmail/" . $email);
@@ -29,19 +25,24 @@ if (isset($_SESSION['usuario']) && isset($_SESSION['google_login'])) {
     }
 }
 
-var_dump($_SESSION);
-
 include 'includes/header.php';
 
-include "includes/api_tiempo.php";
+?>
 
-include 'includes/buscador_incidencias.php';
+<div class="container">
+    <div class="search">
+        <form action="lista_viajes.php" method="GET">
+            <input type="text" name="origen" placeholder="Origen" required>
+            <input type="text" name="destino" placeholder="Destino" required>
+            <input type="date" name="fecha" required>
+            <input type="time" name="hora" required>
+            <input type="submit" value="Buscar">
+        </form>
+    </div>
+</div>
 
-include 'includes/mapa.php';
-if ($_SESSION['usuario']->admin != null) {
-    include 'includes/usuarios.php';
-}
-
-include 'includes/viajes.php';
+<?php
 
 include 'includes/footer.php';
+
+?>

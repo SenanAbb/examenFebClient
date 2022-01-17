@@ -26,7 +26,7 @@
         $_SESSION['server_msg'] = $result->data->msg;
     }
     
-    header('Location: ../index.php');
+    header('Location: ../admin/users.php');
 ?>
 
 
