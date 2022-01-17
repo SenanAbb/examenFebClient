@@ -2,11 +2,7 @@
     session_start();
     $res = file_get_contents("https://blablacariw.herokuapp.com//conversaciones/".$_GET['id']);
     $data = json_decode($res);
-<<<<<<< HEAD
     // $resViajes = file_get_contents("https://blablacariw.herokuapp.com//listaviajes");
-=======
-    // $resViajes = file_get_contents("https://blablacariw.herokuapp.com/listaviajes");
->>>>>>> 46687286e0d79afa105bf5d92cf4dd17f2aac34d
     // $dataViajes = json_decode($resViajes);
 ?>
 

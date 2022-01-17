@@ -1,10 +1,6 @@
 <?php
 session_start();
-<<<<<<< HEAD
 $dataViajes = file_get_contents("https://blablacariw.herokuapp.com//listaviajes");
-=======
-$dataViajes = file_get_contents("https://blablacariw.herokuapp.com/listaviajes");
->>>>>>> 46687286e0d79afa105bf5d92cf4dd17f2aac34d
 $viajes = json_decode($dataViajes)->data->viajes;
 
 include './includes/header.php';

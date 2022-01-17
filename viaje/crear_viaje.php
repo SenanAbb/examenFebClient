@@ -1,11 +1,7 @@
 <?php
     session_start();
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-<<<<<<< HEAD
         $url = 'https://blablacariw.herokuapp.com//travels/add';
-=======
-        $url = 'https://blablacariw.herokuapp.com/travels/add';
->>>>>>> 46687286e0d79afa105bf5d92cf4dd17f2aac34d
     
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -38,11 +34,7 @@
         header('Location: ../index.php');
     }
     else {
-<<<<<<< HEAD
         $res = file_get_contents("https://blablacariw.herokuapp.com//users/edit/".$_SESSION['usuario']->_id);
-=======
-        $res = file_get_contents("https://blablacariw.herokuapp.com/users/edit/".$_SESSION['usuario']->_id);
->>>>>>> 46687286e0d79afa105bf5d92cf4dd17f2aac34d
         $nombre = json_decode($res)->data->usuario[0]->nombre; 
     }
 ?>

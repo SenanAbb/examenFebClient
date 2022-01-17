@@ -15,11 +15,7 @@ if (isset($_SESSION['usuario'])) {
     $email = $_SESSION['usuario']->email;
 
     // Compruebo si el email existe en la BD
-<<<<<<< HEAD
     $data = file_get_contents("https://blablacariw.herokuapp.com//findUserByEmail/" . $email);
-=======
-    $data = file_get_contents("https://blablacariw.herokuapp.com/findUserByEmail/" . $email);
->>>>>>> 46687286e0d79afa105bf5d92cf4dd17f2aac34d
     $user = json_decode($data);
 
     // Si existe -> me traigo su información y lo guardo
@@ -29,7 +25,7 @@ if (isset($_SESSION['usuario'])) {
         $_SESSION['usuario'] = $user->data->usuarios[0];
     } else {
         // Si no existe -> lo inserto en la BD e inicializo sus valores
-        //header('Location: /funciones/nuevo_usuario.php');
+        header('Location: /funciones/nuevo_usuario.php');
     }
     error_reporting(E_ERROR | E_PARSE);
 }

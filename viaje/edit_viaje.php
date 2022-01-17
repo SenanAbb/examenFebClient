@@ -1,11 +1,7 @@
 <?php
     session_start();
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-<<<<<<< HEAD
         $url = "https://blablacariw.herokuapp.com//travels/edit/".$_POST['id'];
-=======
-        $url = "https://blablacariw.herokuapp.com/travels/edit/".$_POST['id'];
->>>>>>> 46687286e0d79afa105bf5d92cf4dd17f2aac34d
         
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -36,15 +32,9 @@
         header('Location: edit_viaje.php');
     }
     else {
-<<<<<<< HEAD
         $res = file_get_contents("https://blablacariw.herokuapp.com//travels/edit/".$_GET['id']);
         $data = json_decode($res); 
         $resUsers = file_get_contents("https://blablacariw.herokuapp.com//");
-=======
-        $res = file_get_contents("https://blablacariw.herokuapp.com/travels/edit/".$_GET['id']);
-        $data = json_decode($res); 
-        $resUsers = file_get_contents("https://blablacariw.herokuapp.com/");
->>>>>>> 46687286e0d79afa105bf5d92cf4dd17f2aac34d
         $dataUsers = json_decode($resUsers);
         include "../includes/header.php";
     }
@@ -58,11 +48,7 @@
         echo "<br>";
         foreach($data->data->viaje[0]->id_pasajeros as $pasajero){
             if(!empty($pasajero)){
-<<<<<<< HEAD
                 $resAux = file_get_contents("https://blablacariw.herokuapp.com//users/edit/".$pasajero);
-=======
-                $resAux = file_get_contents("https://blablacariw.herokuapp.com/users/edit/".$pasajero);
->>>>>>> 46687286e0d79afa105bf5d92cf4dd17f2aac34d
                 $dataAux = json_decode($resAux); 
                 ?>
                 <p> - <?php echo $dataAux->data->usuario[0]->nombre. " ".$dataAux->data->usuario[0]->apellido; ?></p> <br>

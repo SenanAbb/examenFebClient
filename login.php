@@ -2,11 +2,7 @@
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-<<<<<<< HEAD
     $data = file_get_contents("https://blablacariw.herokuapp.com//findUserByEmail/" . $_POST['email']);
-=======
-    $data = file_get_contents("https://blablacariw.herokuapp.com/findUserByEmail/" . $_POST['email']);
->>>>>>> 46687286e0d79afa105bf5d92cf4dd17f2aac34d
     $user = json_decode($data);
 
     if (!empty($user->data->usuarios)) {
