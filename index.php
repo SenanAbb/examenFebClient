@@ -15,12 +15,11 @@ if (isset($_SESSION['usuario'])) {
     $email = $_SESSION['usuario']->email;
 
     // Compruebo si el email existe en la BD
-<<<<<<< HEAD
-    $data = file_get_contents("https://blablacariw.herokuapp.com//findUserByEmail/" . $email);
-=======
     $data = file_get_contents("https://blablacariw.herokuapp.com/findUserByEmail/" . $email);
->>>>>>> 46687286e0d79afa105bf5d92cf4dd17f2aac34d
     $user = json_decode($data);
+
+    $resViajes = file_get_contents("http://blablacariw.herokuapp.com/listaviajes");
+    $dataViajes = json_decode($resViajes);
 
     // Si existe -> me traigo su información y lo guardo
     if (!empty($user->data->usuarios)) {
@@ -50,18 +49,20 @@ include 'includes/header.php';
     </div>
 </div>
 
+<?php 
+    
+    include "includes/api_tiempo.php";
+
     include 'includes/buscador_incidencias.php';
-    
+
     include 'includes/mapa.php';
-    
+
     if ($_SESSION['usuario']->admin != null){
         include 'includes/usuarios.php';
     }
-    
+
     include 'includes/viajes.php';
-    
-    include 'includes/footer.php';
-    
+
     include 'includes/footer.php';
 
 ?>

@@ -1,4 +1,3 @@
-<?php include 'paypal/config.php'?>
 
 <section class="container">
     <h1>Viajes</h1>
