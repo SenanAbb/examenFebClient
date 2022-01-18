@@ -11,6 +11,7 @@ $hora = strtotime($_GET['hora']);
 
 $res = file_get_contents("https://blablacariw.herokuapp.com/travels/search?origen=" . $origen . "&destino=" . $destino);
 $data = json_decode($res);
+var_dump($data);
 $viajes = array([]);
 
 foreach ($data->viajes as $viaje){
