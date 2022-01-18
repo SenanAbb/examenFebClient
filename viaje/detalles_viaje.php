@@ -29,7 +29,7 @@
 <h3>Contactar con el conductor: </h3>
 <form action="./mensajeria/ver_conversacion.php" method="GET">
                 <input type="hidden" value="<?php echo $conductor->_id?>" name="id_ajeno">
-                <input type="hidden" value="<?php echo $_GET["id_local"]->_id?>" name="id_local">
+                <input type="hidden" value="<?php echo $_GET['id_local']->_id?>" name="id_local">
                 <th><input type="submit" value="Ver conversación con el conductor"></th>
             </form>
 <?php
