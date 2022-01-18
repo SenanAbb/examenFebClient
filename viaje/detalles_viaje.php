@@ -29,7 +29,7 @@
 <h3>Contactar con el conductor: </h3>
 <form action="./mensajeria/ver_conversacion.php" method="GET">
                 <input type="hidden" value="<?php echo $conductor->_id?>" name="id_ajeno">
-                <input type="hidden" value="<?php echo $_SESSION['usuario']['id']?>" name="id_local">
+                <input type="hidden" value="<?php echo $_SESSION['usuario']->_id?>" name="id_local">
                 <th><input type="submit" value="Ver conversación con el conductor"></th>
             </form>
 <?php
@@ -40,11 +40,6 @@
                 <input type="hidden" value="<?php echo $_SESSION['usuario']['id']?>" name="id_local">
                 <th><input type="submit" value="Ver conversación con el conductor"></th>
             </form>
-        <?php } else { ?>
-            <form action="./mensajeria/crear_conversacion.php" method="POST">              
-                <input type="hidden" value="<?php echo $conductor->_id?>" name="id_local">
-                <input type="hidden" value="<?php echo $_SESSION['usuario']['id']?>" name="id_local">
-                <input type="submit" value="Nueva Conversacion con el conductor">
         <?php } 
     }
     ?>
