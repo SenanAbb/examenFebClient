@@ -7,6 +7,9 @@
     $dataConductor = json_decode($resConductor);
     $conductor = $dataConductor->data->usuario[0];
 
+    $resConversaciones = file_get_contents("https://blablacariw.herokuapp.com/conversaciones/".$_SESSION['usuario']['id']);
+    $dataConversaciones = json_decode($resConversaciones);
+
     error_reporting(E_ERROR | E_PARSE);
 
     include '../paypal/config.php'
@@ -23,5 +26,25 @@
 <h3>Fecha: <?php echo $viaje->fecha_salida?></h3>
 <h3>Hora de salida: <?php echo $viaje->hora_salida?></h3>
 <h3>Precio: <?php echo $viaje->price; echo $viaje->currency?></h3>
+<h3>Contactar con el conductor:</h3>
+
+<?php
+    foreach($dataConversaciones->data->usuarios as $usuarioConversacion){
+        if($conductor->_id == $usuarioConversacion){ ?>
+            <form action="./mensajeria/ver_conversacion.php" method="GET">
+                <input type="hidden" value="<?php echo $conductor->_id?>" name="id_ajeno">
+                <input type="hidden" value="<?php echo $_SESSION['usuario']['id']?>" name="id_local">
+                <th><input type="submit" value="Ver conversación con el conductor"></th>
+            </form>
+        <?php } else { ?>
+            <form action="./mensajeria/crear_conversacion.php" method="POST">              
+                <input type="hidden" value="<?php echo $conductor->_id?>" name="id_local">
+                <input type="hidden" value="<?php echo $_SESSION['usuario']['id']?>" name="id_ajeno">
+                <input type="submit" value="Nueva Conversacion con el conductor">
+        <?php } 
+    }
+    ?>
+
+
 
 <?php include '../paypal/paypalCheckout.php'?>
