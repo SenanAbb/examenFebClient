@@ -32,14 +32,14 @@
 
 <?php
     if (in_array($conductor, $dataConversaciones->data->usuarios)) { ?>
-            <form action="./mensajeria/ver_conversacion.php" method="GET">
+            <form action="../mensajeria/ver_conversacion.php" method="GET">
                 <input type="hidden" value="<?php echo $conductor->_id?>" name="id_ajeno">
                 <input type="hidden" value="<?php echo $_GET['id_local']?>" name="id_local">
                 <input type="submit" value="Ver conversación con el conductor">
             </form>
 
         <?php } else { ?>
-            <form action="./mensajeria/crear_conversacion.php" method="GET">
+            <form action="../mensajeria/crear_conversacion.php" method="GET">
                 <input type="hidden" value="<?php echo $conductor->_id?>" name="id_ajeno">
                 <input type="hidden" value="<?php echo $_GET['id_local']?>" name="id_local">
                 <input type="submit" value="Empezar conversación con el conductor">
