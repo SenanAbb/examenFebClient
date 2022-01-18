@@ -1,4 +1,4 @@
-<?php  
+<?php
     session_start();
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -25,5 +25,8 @@
         
         $_SESSION['server_msg'] = $result->data->msg;
     }
-    header('Location: ../myaccount.php');
+    if (isset($_SESSION['usuario']->admin))
+        header('Location: ../index.php');
+    else
+        header('Location: ../myaccount.php');
 ?>

@@ -1,5 +1,11 @@
 <?php
     session_start();
+
+    if (isset($_SESSION['server_msg'])) {
+        echo $_SESSION['server_msg'];
+        unset($_SESSION['server_msg']);
+    }
+
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $url = 'https://blablacariw.herokuapp.com/travels/add';
     
@@ -20,18 +26,25 @@
             "currency" => 'EUR'
         );
 
-        $json = json_encode($data);
+        if (in_array("", $data) or in_array(false, $data)){
+            //Checkea si hay algun campo vacio
+            $_SESSION['server_msg'] = "algun campo vacio";
+            header('Location: crear_viaje.php');
+        } else {
+        
+            $json = json_encode($data);
 
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
-        $output = curl_exec($ch);
-        $info = curl_getinfo($ch);
-        curl_close($ch); 
-        $result = json_decode($output);
-        
-        $_SESSION['server_msg'] = $result->data->msg;
-        
-        header('Location: ../index.php');
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+            $output = curl_exec($ch);
+            $info = curl_getinfo($ch);
+            curl_close($ch); 
+            $result = json_decode($output);
+            
+            $_SESSION['server_msg'] = $result->data->msg;
+            
+            header('Location: ../index.php');
+        }
     }
     else {
         $res = file_get_contents("https://blablacariw.herokuapp.com/users/edit/".$_SESSION['usuario']->_id);
@@ -45,11 +58,11 @@
 
 <form action="crear_viaje.php" method="POST">
 
-    <input placeholder="fecha_salida" name="fecha_salida">
-    <input placeholder="hora_salida" name="hora_salida">
-    <input placeholder="lugar_salida" name="lugar_salida">
-    <input placeholder="lugar_llegada" name="lugar_llegada">
-    <input placeholder="precio (EUR)" name="price">
+    <input placeholder="fecha_salida" name="fecha_salida" require>
+    <input placeholder="hora_salida" name="hora_salida" require>
+    <input placeholder="lugar_salida" name="lugar_salida" require>
+    <input placeholder="lugar_llegada" name="lugar_llegada" require>
+    <input placeholder="precio (EUR)" name="price" require>
     <input type="hidden" value=<?php echo $_SESSION['usuario']->_id?> name="id_conductor">
     <input type="hidden" value=<?php echo $nombre?> name="nombre_conductor">
     <!-- <input type="hidden" name="id_pasajeros[]" value="61c0ef8108a00e29cc6f9b9c"> -->
