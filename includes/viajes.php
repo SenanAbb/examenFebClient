@@ -29,8 +29,7 @@
                             ?>
                             <form action="../viaje/detalles_viaje.php" method="GET">
                                 <input type="hidden" value="<?php echo $viaje->_id?>" name="id">
-                                <?php var_dump($_SESSION['usuario']['id']); ?>
-                                <input type="hidden" value="<?php echo $_SESSION['usuario']['id']?>" name="id_local">
+                                <!-- <input type="hidden" value="<?php echo $_SESSION['usuario']['id']?>" name="id_local"> -->
                                 <th><input type="submit" value="Detalles"></th>
                             </form>
                         <?php } ?>
