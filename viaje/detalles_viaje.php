@@ -7,14 +7,16 @@
     $dataConductor = json_decode($resConductor);
     $conductor = $dataConductor->data->usuario[0];
 
-    $resConversaciones = file_get_contents("https://blablacariw.herokuapp.com/conversaciones/".$_SESSION['usuario']['id']);
+    $resConversaciones = file_get_contents("https://blablacariw.herokuapp.com/conversaciones/".$_GET['id_local']);
     $dataConversaciones = json_decode($resConversaciones);
+
+    
 
     error_reporting(E_ERROR | E_PARSE);
 
     include '../paypal/config.php'
 ?>
-<?php var_dump($_GET['id_local']); ?>
+
 <h1>Detalles del viaje</h1>
 <h3>Trayecto: <?php echo $viaje->lugar_salida?> - <?php echo $viaje->lugar_llegada?></h3>
 <h3>Conductor: <?php echo $conductor->nombre?> <?php echo $conductor->apellidos?> (<?php echo $conductor->email?>)</h3>
@@ -27,21 +29,22 @@
 <h3>Hora de salida: <?php echo $viaje->hora_salida?></h3>
 <h3>Precio: <?php echo $viaje->price; echo $viaje->currency?></h3>
 <h3>Contactar con el conductor: </h3>
-<form action="./mensajeria/ver_conversacion.php" method="GET">
-                <input type="hidden" value="<?php echo $conductor->_id?>" name="id_ajeno">
-                <input type="hidden" value="<?php echo $_SESSION['usuario']->_id?>" name="id_local">
-                <th><input type="submit" value="Ver conversación con el conductor"></th>
-            </form>
+
 <?php
-    foreach($dataConversaciones->data->usuarios as $usuarioConversacion){
-        if($conductor->_id == $usuarioConversacion){ ?>
+    if (in_array($dataConversaciones->data->usuarios, $conductor->_id)) { ?>
             <form action="./mensajeria/ver_conversacion.php" method="GET">
                 <input type="hidden" value="<?php echo $conductor->_id?>" name="id_ajeno">
-                <input type="hidden" value="<?php echo $_SESSION['usuario']['id']?>" name="id_local">
+                <input type="hidden" value="<?php echo $_GET['id_local']?>" name="id_local">
                 <th><input type="submit" value="Ver conversación con el conductor"></th>
             </form>
-        <?php } 
-    }
+
+        <?php } else { ?>
+            <form action="./mensajeria/crear_conversacion.php" method="GET">
+                <input type="hidden" value="<?php echo $conductor->_id?>" name="id_ajeno">
+                <input type="hidden" value="<?php echo $_GET['id_local']?>" name="id_local">
+                <th><input type="submit" value="Empezar conversación con el conductor"></th>
+            </form>
+        <?php }
     ?>
 
 
