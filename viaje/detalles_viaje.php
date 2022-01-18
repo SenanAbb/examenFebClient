@@ -14,7 +14,7 @@
 
     include '../paypal/config.php'
 ?>
-<php var_dump(id_local); ?>
+<?php var_dump($_GET['id_local']); ?>
 <h1>Detalles del viaje</h1>
 <h3>Trayecto: <?php echo $viaje->lugar_salida?> - <?php echo $viaje->lugar_llegada?></h3>
 <h3>Conductor: <?php echo $conductor->nombre?> <?php echo $conductor->apellidos?> (<?php echo $conductor->email?>)</h3>
