@@ -31,6 +31,9 @@
 <h3>Contactar con el conductor: </h3>
 
 <?php
+var_dump($conductor->_id);
+var_dump($dataConversaciones->data->usuarios->_id);
+var_dump(in_array($conductor->_id, $dataConversaciones->data->usuarios->_id));
     if (in_array($conductor->_id, $dataConversaciones->data->usuarios->_id)) { ?>
             <form action="./mensajeria/ver_conversacion.php" method="GET">
                 <input type="hidden" value="<?php echo $conductor->_id?>" name="id_ajeno">
