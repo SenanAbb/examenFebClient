@@ -31,7 +31,7 @@
 <h3>Contactar con el conductor: </h3>
 
 <?php
-    if (in_array($dataConversaciones->data->usuarios, $conductor->_id)) { ?>
+    if (in_array($dataConversaciones->data->usuarios, $conductor)) { ?>
             <form action="./mensajeria/ver_conversacion.php" method="GET">
                 <input type="hidden" value="<?php echo $conductor->_id?>" name="id_ajeno">
                 <input type="hidden" value="<?php echo $_GET['id_local']?>" name="id_local">
