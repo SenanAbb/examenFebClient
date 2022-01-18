@@ -26,7 +26,12 @@
 <h3>Fecha: <?php echo $viaje->fecha_salida?></h3>
 <h3>Hora de salida: <?php echo $viaje->hora_salida?></h3>
 <h3>Precio: <?php echo $viaje->price; echo $viaje->currency?></h3>
-<h3>Contactar con el conductor:
+<h3>Contactar con el conductor: </h3>
+<form action="./mensajeria/ver_conversacion.php" method="GET">
+                <input type="hidden" value="<?php echo $conductor->_id?>" name="id_ajeno">
+                <input type="hidden" value="<?php echo $_SESSION['usuario']['id']?>" name="id_local">
+                <th><input type="submit" value="Ver conversación con el conductor"></th>
+            </form>
 <?php
     foreach($dataConversaciones->data->usuarios as $usuarioConversacion){
         if($conductor->_id == $usuarioConversacion){ ?>
@@ -43,7 +48,7 @@
         <?php } 
     }
     ?>
-</h3>
+
 
 
 
