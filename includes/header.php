@@ -16,7 +16,7 @@
     <nav>
         <div class="container">
             <div class="contenido-header">
-                <img src="./resources/logo.svg" alt="Imagen logo">
+                <img src="#" alt="Imagen logo">
                 <div class="d-flex justify-content-center py-3">
                     <ul class="nav nav-pills">
                         <li class="nav-item">
