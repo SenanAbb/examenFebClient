@@ -1,4 +1,4 @@
-<?php const __DIR_NAME__ = 'http://localhost/'; ?>
+<?php const __DIR_NAME__ = 'https://blablacarclient.herokuapp.com/'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
