@@ -16,12 +16,12 @@
 
         $data = array(
             "id_pasajeros" => [],
-            "id_conductor" => $_POST['id_conductor'],
-            "nombre_conductor" => $_POST['nombre_conductor'],
+            "id_conductor" => trim($_POST['id_conductor']),
+            "nombre_conductor" => trim($_POST['nombre_conductor']),
             "fecha_salida" => strtotime($_POST['fecha_salida']),
             "hora_salida" => strtotime($_POST['hora_salida']),            
-            "lugar_salida" => $_POST['lugar_salida'],
-            "lugar_llegada" => $_POST['lugar_llegada'],
+            "lugar_salida" => trim($_POST['lugar_salida']),
+            "lugar_llegada" => trim($_POST['lugar_llegada']),
             "price" => $_POST['price'],
             "currency" => 'EUR'
         );
@@ -51,11 +51,11 @@
 
 <form action="crear_viaje.php" method="POST">
 
-    <input placeholder="fecha_salida" name="fecha_salida" required>
-    <input placeholder="hora_salida" name="hora_salida" required>
-    <input placeholder="lugar_salida" name="lugar_salida" required>
-    <input placeholder="lugar_llegada" name="lugar_llegada" required>
-    <input placeholder="precio (EUR)" name="price" required>
+    <input type="text" placeholder="lugar_salida" name="lugar_salida" required>
+    <input type="text" placeholder="lugar_llegada" name="lugar_llegada" required>
+    <input type="date" placeholder="fecha_salida" name="fecha_salida" required>
+    <input type="time" placeholder="hora_salida" name="hora_salida" required>
+    <input type="number" placeholder="precio (EUR)" name="price" required>
     <input type="hidden" value=<?php echo $_SESSION['usuario']->_id?> name="id_conductor">
     <input type="hidden" value=<?php echo $nombre?> name="nombre_conductor">
     <!-- <input type="hidden" name="id_pasajeros[]" value="61c0ef8108a00e29cc6f9b9c"> -->

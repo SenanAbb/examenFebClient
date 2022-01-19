@@ -22,10 +22,11 @@ include '../paypal/config.php' ?>
         foreach ($viajes as $viaje) { ?>
             <tr>
                 <td><?php echo $viaje->nombre_conductor; ?></td>
-                <td><?php echo $viaje->fecha_salida; ?></td>
-                <td><?php echo $viaje->hora_salida; ?></td>
+                <td><?php echo gmdate("d-m-Y", $viaje->fecha_salida); ?></td>
+                <td><?php echo gmdate("H:i", $viaje->hora_salida); ?></td>
                 <td><?php echo $viaje->lugar_salida; ?></td>
                 <td><?php echo $viaje->lugar_llegada; ?></td>
+                <td><?php echo $viaje->price; ?></td>
                 <form action="delete_viaje.php" method="POST">
                     <input type="hidden" value="<?php echo $viaje->_id ?>" name="id">
                     <th><input type="submit" value="Eliminar"></th>

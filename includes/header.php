@@ -18,11 +18,11 @@
                 <div class="d-flex justify-content-center py-3">
                     <ul class="nav nav-pills">
                         <li class="nav-item">
-                            <h1><a href="../index.php">Home</a></h1>
+                            <a class="nav-link" href="../index.php">Home</a>
                         </li>
                         <li class="nav-item">
                             <?php if (!isset($_SESSION['usuario']->admin)) {?>
-                                <h1><a href="../myaccount.php">Mi Perfil</a></h1>    
+                                <a class="nav-link" href="../myaccount.php">Mi Perfil</a>    
                             <?php }?>
                         </li>
                         <li class="nav-item">
