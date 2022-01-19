@@ -9,20 +9,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     curl_setopt($ch, CURLOPT_POST, true);
 
     $original = array(
-        "nombre" => $_POST['nombre'],
-        "apellido" => $_POST['apellido'],
-        "email" => $_POST['email'],
-        "password" => $_POST['password']
+        "nombre" => trim($_POST['nombre']),
+        "apellido" => trim($_POST['apellido']),
+        "email" => trim($_POST['email']),
+        "password" => trim($_POST['password'])
     );
 
     $usuario = new stdClass();
 
-    foreach ($original as $key => $value){
+    foreach ($original as $key => $value) {
         $usuario->$key = $value;
     }
 
     curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($usuario));
 
     $output = curl_exec($ch);
     $info = curl_getinfo($ch);

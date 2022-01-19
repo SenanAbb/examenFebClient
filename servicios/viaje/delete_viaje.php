@@ -25,8 +25,8 @@
         
         $_SESSION['server_msg'] = $result->data->msg;
     }
-    if (isset($_SESSION['usuario']->admin))
-        header('Location: ../index.php');
+    if (isset($_SESSION['admin']))
+        header('Location: ../../admin/viajes.php');
     else
-        header('Location: ../myaccount.php');
+        header('Location: ../../perfil_usuario.php');
 ?>

@@ -5,8 +5,6 @@ $viajes = json_decode($dataViajes)->data->viajes;
 
 include './includes/header.php';
 
-include '../paypal/config.php'; 
-
 ?>
 
 <section class="container">
@@ -21,15 +19,19 @@ include '../paypal/config.php';
             <th>Lugar Llegada</th>
         </tr>
         <?php
-        foreach ($viajes as $viaje) { ?>
+        foreach ($viajes as $viaje) {
+            // Me traigo el nombre del conductor
+            $data = file_get_contents("https://blablacariw.herokuapp.com/findUserById/" . $viaje->id_conductor);
+            $nombre_conductor = json_decode($data)->data->usuario[0]->nombre;
+        ?>
             <tr>
-                <td><?php echo $viaje->nombre_conductor; ?></td>
+                <td><?php echo $nombre_conductor; ?></td>
                 <td><?php echo gmdate("d-m-Y", $viaje->fecha_salida); ?></td>
                 <td><?php echo gmdate("H:i", $viaje->hora_salida); ?></td>
                 <td><?php echo $viaje->lugar_salida; ?></td>
                 <td><?php echo $viaje->lugar_llegada; ?></td>
                 <td><?php echo $viaje->price; ?></td>
-                <form action="delete_viaje.php" method="POST">
+                <form action="../servicios/viaje/delete_viaje.php" method="POST">
                     <input type="hidden" value="<?php echo $viaje->_id ?>" name="id">
                     <th><input type="submit" value="Eliminar"></th>
                 </form>

@@ -24,17 +24,13 @@ include './includes/header.php';
                                     echo "<img src='".$usuario->foto."' style='width:30px;height:30px;'?></td>";?>
                         <td><?php echo $usuario->nombre; ?></td>
                         <td><?php echo $usuario->apellido; ?></td>
-                        <form action="../../usuario/delete.php" method="POST">
+                        <form action="../servicios/usuario/delete.php" method="POST">
                             <input type="hidden" value="<?php echo $usuario->_id?>" name="id">
-                            <th><input type="submit" value="Eliminar"></th>
+                            <td><input type="submit" value="Eliminar"></td>
                         </form>
                         <form action="usuario/edit.php" method="GET">
                             <input type="hidden" value="<?php echo $usuario->_id?>" name="id">
-                            <th><input type="submit" value="Editar"></th>
-                        </form>
-                        <form action="crear_viaje.php" method="GET">
-                            <input type="hidden" value="<?php echo $usuario->_id?>" name="id">
-                            <th><input type="submit" value="Añadir viaje"></th>
+                            <td><input type="submit" value="Editar"></td>
                         </form>
                     </tr>
                 
