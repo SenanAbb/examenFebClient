@@ -226,3 +226,49 @@ nav {
 .admin__info-card p {
   font-size: 3rem;
 }
+
+.search__box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search__box input{
+  padding: 1rem 0 1rem 1rem;
+  border: none;
+  outline: none;
+  border: 1px solid #ddd;
+  width: 35%;
+}
+
+.search__box input:first-child{
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+.search__box input:last-child{
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  padding: 1rem 2rem; 
+  background-color: var(--azul);
+  color: white;
+  font-weight: 600;
+  border: 1px solid var(--azul);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 120px;
+}
+
+.search__box input:last-child:hover{
+  background-color: rgb(20, 46, 194);
+  border: 1px solid rgb(20, 46, 194);
+}
+
+.search__box input[type=date]{
+  width: 180px;
+}
+.search__box input[type=time]{
+  width: 100px;
+}
+
+

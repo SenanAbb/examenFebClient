@@ -5,7 +5,10 @@ $viajes = json_decode($dataViajes)->data->viajes;
 
 include './includes/header.php';
 
-include '../paypal/config.php' ?>
+include '../paypal/config.php'; 
+
+var_dump($viajes);
+?>
 
 <section class="container">
     <h1>Viajes</h1>

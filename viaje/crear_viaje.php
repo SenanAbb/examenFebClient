@@ -22,7 +22,7 @@
             "hora_salida" => strtotime($_POST['hora_salida']),            
             "lugar_salida" => trim($_POST['lugar_salida']),
             "lugar_llegada" => trim($_POST['lugar_llegada']),
-            "price" => $_POST['price'],
+            "price" => intval($_POST['price']),
             "currency" => 'EUR'
         );
         
