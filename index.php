@@ -86,7 +86,7 @@ if (isset($_SESSION['viajes_encontrados'])) {
                         </form>
                     </div>
                 <?php
-                    //unset($_SESSION['viajes_encontrados']);
+                    unset($_SESSION['viajes_encontrados']);
                 } ?>
             </div>
 
