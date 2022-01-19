@@ -11,6 +11,12 @@
   color: #FEFCFD;
 }
 
+.centro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 html {
   font-size: 62.5%;
   box-sizing: border-box;
@@ -114,6 +120,24 @@ tr:nth-child(even) {
   outline: none;
   margin-bottom: 10px;
   transition: all 0.3s ease;
+}
+
+.submit-button {
+  border: none;
+  background-color: var(--azul);
+  color: white;
+  transition: all 0.3s ease;
+  border-radius: 30px;
+  font-weight: 500;
+  font-size: 1.8rem;
+  cursor: pointer;
+  text-align: center;
+  padding: 1rem 3rem;
+  margin: 2rem 1.5rem;
+}
+
+.submit-button:hover {
+  background-color: rgb(20, 46, 194);
 }
 
 .login-card form input:focus {
@@ -278,5 +302,4 @@ nav {
 .search__box input[type=time]{
   width: 100px;
 }
-
 

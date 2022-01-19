@@ -43,21 +43,41 @@ include "../../includes/header.php";
 ?>
 
 <div class="container">
+    <div class="login-box">
+        <div class="login-card">
+            <p class="login-text">Crear viaje</p>
 
-    <h1>Crear viaje</h1>
-
-    <form action="crear_viaje.php" method="POST">
-
-        <input type="text" placeholder="lugar_salida" name="lugar_salida" required>
-        <input type="text" placeholder="lugar_llegada" name="lugar_llegada" required>
-        <input type="date" placeholder="fecha_salida" name="fecha_salida" required>
-        <input type="time" placeholder="hora_salida" name="hora_salida" required>
-        <input type="number" placeholder="precio (EUR)" name="price" required>
-        <input type="hidden" value=<?php echo $_SESSION['usuario']->_id ?> name="id_conductor">
-        <input type="submit" value="Crear">
-    </form>
-
-    <a href="../index.php" class="btn btn-danger">Cancelar</a>
+            <form action="crear_viaje.php" method="POST">
+                <div class="login-inputs">
+                    <div class="login-input">
+                        <label for="lugar_saluda">Lugar de salida</label>
+                        <input type="text" name="lugar_salida" required>
+                    </div>
+                    <div class="login-input">
+                        <label for="lugar_llegada">Lugar de llegada</label>
+                        <input type="text" name="lugar_llegada" required>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col">
+                            <input type="date" name="fecha_salida" required>
+                        </div>
+                        <div class="col">
+                            <input type="time" name="hora_salida" required>
+                        </div>
+                    </div>
+                    <div class="login-input">
+                        <label for="price">Precio (€)</label>
+                        <input type="number" name="price" required>
+                    </div>
+                    <input type="hidden" value=<?php echo $_SESSION['usuario']->_id ?> name="id_conductor">
+                    <div class="centro">
+                        <button type="submit" value="Crear" class="submit-button">Crear</button>
+                        <a href="../../index.php" style="margin: 2rem 1.5rem">Cancelar</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 
 <?php include '../../includes/footer.php' ?>
