@@ -24,7 +24,7 @@ html {
 
 body {
   font-size: 1.6rem;
-  background-color: #FEFCFD;
+  background-color: rgb(204, 244, 255);
   margin: 0;
   padding: 0;
   height: 100vh;
@@ -36,7 +36,6 @@ nav {
 }
 
 .contenido-header {
-  background-color: #BFCDE0;
   display: flex;
   justify-content: space-between;
   align-items: center;

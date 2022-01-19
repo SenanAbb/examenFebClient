@@ -7,7 +7,6 @@ include './includes/header.php';
 
 include '../paypal/config.php'; 
 
-var_dump($viajes);
 ?>
 
 <section class="container">
