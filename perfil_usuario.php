@@ -86,3 +86,7 @@ if (isset($_SESSION['login'])) {
 <?php } else { ?> <h3 style="margin-top:40px; margin-left:10px">No tienes ningún viaje reservado.</h3> <?php } ?>
 
 <!--- TODO: Boton a conversación --->
+<form action="./servicios/mensajeria/lista_conversaciones.php" method="GET">
+                <input type="hidden" value="<?php echo $user['id']?>" name="id">
+                <input type="submit" value="Tus conversaciones">
+</form>
