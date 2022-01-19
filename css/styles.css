@@ -3,6 +3,14 @@
   --rojo: rgb(206, 34, 34);
 }
 
+.steel-blue {
+  color: #BFCDE0;
+}
+
+.white {
+  color: #FEFCFD;
+}
+
 html {
   font-size: 62.5%;
   box-sizing: border-box;
@@ -16,7 +24,7 @@ html {
 
 body {
   font-size: 1.6rem;
-  background-color: rgb(204, 244, 255);
+  background-color: #FEFCFD;
   margin: 0;
   padding: 0;
   height: 100vh;
@@ -28,6 +36,7 @@ nav {
 }
 
 .contenido-header {
+  background-color: #BFCDE0;
   display: flex;
   justify-content: space-between;
   align-items: center;
