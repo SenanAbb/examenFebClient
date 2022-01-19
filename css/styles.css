@@ -4,11 +4,11 @@
 }
 
 .steel-blue {
-  color: #BFCDE0;
+  color: #bfcde0;
 }
 
 .white {
-  color: #FEFCFD;
+  color: #fefcfd;
 }
 
 .centro {
@@ -265,7 +265,7 @@ nav {
   align-items: center;
 }
 
-.search__box input{
+.search__box input {
   padding: 1rem 0 1rem 1rem;
   border: none;
   outline: none;
@@ -273,15 +273,15 @@ nav {
   width: 35%;
 }
 
-.search__box input:first-child{
+.search__box input:first-child {
   border-bottom-left-radius: 10px;
   border-top-left-radius: 10px;
 }
 
-.search__box input:last-child{
+.search__box input:last-child {
   border-bottom-right-radius: 10px;
   border-top-right-radius: 10px;
-  padding: 1rem 2rem; 
+  padding: 1rem 2rem;
   background-color: var(--azul);
   color: white;
   font-weight: 600;
@@ -291,15 +291,63 @@ nav {
   width: 120px;
 }
 
-.search__box input:last-child:hover{
+.search__box input:last-child:hover {
   background-color: rgb(20, 46, 194);
   border: 1px solid rgb(20, 46, 194);
 }
 
-.search__box input[type=date]{
+.search__box input[type="date"] {
   width: 180px;
 }
-.search__box input[type=time]{
+.search__box input[type="time"] {
   width: 100px;
+}
+
+.viajes__contenedor {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  margin: 20px 0;
+}
+
+.viajes__card {
+  background-color: white;
+  border-radius: 20px;
+  padding: 2rem 3rem;
+  -webkit-box-shadow: 0px 0px 19px 7px rgba(0, 0, 0, 0.22);
+  box-shadow: 0px 0px 19px 7px rgba(0, 0, 0, 0.22);
+}
+
+.viajes__card-conductor {
+  font-weight: 700;
+  font-size: 2.4rem;
+  color: var(--azul);
+  text-align: center;
+  cursor: context-menu;
+}
+
+.viajes__card-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.viajes__card-info span {
+  color: rgb(33, 33, 33);
+  font-size: 1.4rem;
+  opacity: 60%;
+  cursor: context-menu;
+}
+
+.viajes__card-info p {
+  cursor: context-menu;
+}
+
+.viajes__card-precio {
+  color: #0c9d35;
+  font-weight: 700;
+  text-align: center;
+  font-size: 3rem;
 }
 
