@@ -38,22 +38,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     header('Location: ../../index.php');
 }
+
 include "../../includes/header.php";
 ?>
 
+<div class="container">
 
-<h1>Crear viaje</h1>
+    <h1>Crear viaje</h1>
 
-<form action="crear_viaje.php" method="POST">
+    <form action="crear_viaje.php" method="POST">
 
-    <input type="text" placeholder="lugar_salida" name="lugar_salida" required>
-    <input type="text" placeholder="lugar_llegada" name="lugar_llegada" required>
-    <input type="date" placeholder="fecha_salida" name="fecha_salida" required>
-    <input type="time" placeholder="hora_salida" name="hora_salida" required>
-    <input type="number" placeholder="precio (EUR)" name="price" required>
-    <input type="hidden" value=<?php echo $_SESSION['usuario']->_id ?> name="id_conductor">
-    <input type="submit" value="Crear">
-</form>
+        <input type="text" placeholder="lugar_salida" name="lugar_salida" required>
+        <input type="text" placeholder="lugar_llegada" name="lugar_llegada" required>
+        <input type="date" placeholder="fecha_salida" name="fecha_salida" required>
+        <input type="time" placeholder="hora_salida" name="hora_salida" required>
+        <input type="number" placeholder="precio (EUR)" name="price" required>
+        <input type="hidden" value=<?php echo $_SESSION['usuario']->_id ?> name="id_conductor">
+        <input type="submit" value="Crear">
+    </form>
 
+    <a href="../index.php" class="btn btn-danger">Cancelar</a>
+</div>
 
-<a href="../index.php" class="btn btn-danger">Cancelar</a>
+<?php include '../../includes/footer.php' ?>

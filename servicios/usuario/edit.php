@@ -38,7 +38,7 @@
     else {
         $res = file_get_contents("https://blablacariw.herokuapp.com/users/edit/".$_GET['id']);
         $data = json_decode($res); 
-        include '../includes/header.php';
+        include '../../includes/header.php';
     }
 ?>
 
@@ -66,4 +66,4 @@
 </div>
     
 
-<?php include '../includes/footer.php' ?>
+<?php include '../../includes/footer.php' ?>
