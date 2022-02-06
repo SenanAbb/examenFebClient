@@ -49,7 +49,7 @@ include 'includes/header.php';
     } else {
         unset($_SESSION['viajes_encontrados']);
         $res = file_get_contents("http://blablacariw.herokuapp.com/travels");
-        $viajes = json_decode($res)->$data->$viajes;
+        $viajes = json_decode($res)->data->viajes;
     } ?>
         <section class="container">
 
@@ -64,7 +64,6 @@ include 'includes/header.php';
                     <th>Precio</th>
                 </tr>
                 <?php
-                var_dump(json_decode($res)->$data);
                 foreach ($viajes as $viaje) {
                     // Me traigo el nombre del conductor
                     $data = file_get_contents("https://blablacariw.herokuapp.com/findUserById/" . $_SESSION['usuario']->_id);
@@ -77,7 +76,7 @@ include 'includes/header.php';
                         <td><?php echo gmdate("H:i", $viaje->hora_salida); ?></td>
                         <td><?php echo $viaje->lugar_salida; ?></td>
                         <td><?php echo $viaje->lugar_llegada; ?></td>
-                        <td><?php echo $viaje->price; ?></td>
+                        <td><?php echo $viaje->price; ?>€</td>
                         <form action="reservar_viaje.php" method="POST">
                             <input type="hidden" value="<?php echo $viaje->_id ?>" name="id">
                             <td><input type="submit" value="Reservar"></td>
