@@ -33,10 +33,9 @@ include 'includes/header.php';
 <div class="container">
     <form action="./servicios/viaje/buscar_viajes.php" method="GET">
         <div class="search__box">
-            <input type="text" name="origen" placeholder="Origen" required>
-            <input type="text" name="destino" placeholder="Destino" required>
-            <input type="date" name="fecha" required>
-            <input type="time" name="hora" required>
+            <input type="text" name="origen" placeholder="Origen *" required>
+            <input type="text" name="destino" placeholder="Destino *" required>
+            <input type="date" name="fecha">
             <input type="submit" value="Buscar">
         </div>
     </form>
@@ -45,52 +44,16 @@ include 'includes/header.php';
 
 <!-- Viajes encontrados -->
 <?php
-
-if (isset($_SESSION['viajes_encontrados'])) {
-    if (!empty($_SESSION['viajes_encontrados'])) {
-        $viajes = $_SESSION['viajes_encontrados'] ?>
+    if (isset($_SESSION['viajes_encontrados']) && !empty($_SESSION['viajes_encontrados'])) {
+        $viajes = $_SESSION['viajes_encontrados'];
+    } else {
+        unset($_SESSION['viajes_encontrados']);
+        $res = file_get_contents("http://blablacariw.herokuapp.com/travels");
+        $viajes = json_decode($res)->$data->$viajes;
+    } ?>
         <section class="container">
 
-            <div class="viajes__contenedor">
-
-
-                <?php
-                foreach ($viajes as $viaje) {
-                    // Me traigo el nombre del conductor
-                    $data = file_get_contents("https://blablacariw.herokuapp.com/findUserById/" . $_SESSION['usuario']->_id);
-                    $nombre_conductor = json_decode($data)->data->usuario[0]->nombre;
-
-                ?>
-                    <div class="viajes__card">
-                        <p class="viajes__card-conductor"><?php echo $nombre_conductor; ?></p>
-
-                        <div class="viajes__card-info">
-                            <span>Fecha</span>
-                            <p><?php echo gmdate("d-m-Y", $viaje->fecha_salida); ?></p>
-
-                            <span>Hora</span>
-                            <p><?php echo gmdate("H:i", $viaje->hora_salida); ?></p>
-
-                            <span>Origen</span>
-                            <p><?php echo $viaje->lugar_salida; ?></p>
-
-                            <span>Destino</span>
-                            <p><?php echo $viaje->lugar_llegada; ?></p>
-                        </div>
-                        
-                        <p class="viajes__card-precio"><?php echo $viaje->price . " €"; ?></p>
-
-                        <form action="reservar_viaje.php" method="POST">
-                            <input type="hidden" value="<?php echo $viaje->_id ?>" name="id">
-                            <input type="submit" value="Reservar" class="submit-button">
-                        </form>
-                    </div>
-                <?php
-                    unset($_SESSION['viajes_encontrados']);
-                } ?>
-            </div>
-
-
+            
             <table>
                 <tr>
                     <th>Conductor</th>
@@ -101,6 +64,7 @@ if (isset($_SESSION['viajes_encontrados'])) {
                     <th>Precio</th>
                 </tr>
                 <?php
+                var_dump(json_decode($res)->$data);
                 foreach ($viajes as $viaje) {
                     // Me traigo el nombre del conductor
                     $data = file_get_contents("https://blablacariw.herokuapp.com/findUserById/" . $_SESSION['usuario']->_id);
@@ -125,11 +89,6 @@ if (isset($_SESSION['viajes_encontrados'])) {
                 } ?>
             </table>
         </section>
-<?php } else {
-        echo "No se han encontrado viajes";
-        unset($_SESSION['viajes_encontrados']);
-    }
-} ?>
 
 <!-- .Viajes encontrados -->
 
