@@ -5,18 +5,15 @@ session_start();
 $origen = trim($_GET['origen']);
 $destino = trim($_GET['destino']);
 $fecha = strtotime($_GET['fecha']);
-$hora = strtotime($_GET['hora']);
 
 $res = file_get_contents("http://blablacariw.herokuapp.com/travels?origen=" . $origen . "&destino=" . $destino);
 $data = json_decode($res);
 $viajes = array();
-
 foreach ($data->viajes as $viaje){
     if (!empty($fecha) && $fecha === $viaje->fecha_salida){
-        $viajes[] = $viaje;
+        array_push($viajes, $viaje);
     }
 }
-
 $_SESSION['viajes_encontrados'] = $viajes;
 header('Location: ../../index.php');
 ?>

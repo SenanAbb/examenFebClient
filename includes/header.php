@@ -1,4 +1,7 @@
-<?php const __DIR_NAME__ = 'https://blablacarclient.herokuapp.com/'; ?>
+<?php 
+    if (getenv('CLIENTE'))
+    $__DIR_NAME__ =   getenv('CLIENT');
+    else $__DIR_NAME__ =  'https://localhost.com/'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,7 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="<?php echo __DIR_NAME__ . "css/styles.css"?>">
+    <link rel="stylesheet" href="<?php echo $__DIR_NAME__ . "css/styles.css"?>">
     <title>BlablacarIW</title>
 </head>
 
@@ -20,11 +23,11 @@
                 <div class="d-flex justify-content-center py-3">
                     <ul class="nav nav-pills">
                         <li class="nav-item">
-                            <a class="nav-link" href="<?php echo __DIR_NAME__ . "index.php" ?>">Home</a>
+                            <a class="nav-link" href="<?php echo $__DIR_NAME__ . "index.php" ?>">Home</a>
                         </li>
                         <li class="nav-item">
                             <?php if (!isset($_SESSION['usuario']->admin)) {?>
-                                <a class="nav-link" href="<?php echo __DIR_NAME__ . "perfil_usuario.php" ?>">Mi Perfil</a>    
+                                <a class="nav-link" href="<?php echo $__DIR_NAME__ . "perfil_usuario.php" ?>">Mi Perfil</a>    
                             <?php }?>
                         </li>
                         <li class="nav-item">
@@ -37,15 +40,15 @@
                         } else if (isset($_SESSION['login']) && isset($_SESSION['admin'])) {
                         ?>
                             <li class="nav-item">
-                                <a href="<?php echo __DIR_NAME__ . "admin/admin.php" ?>" class="nav-link">Panel de administración</a>
+                                <a href="<?php echo $__DIR_NAME__ . "admin/admin.php" ?>" class="nav-link">Panel de administración</a>
                             </li>
                             <li class="nav-item">
-                                <a href="<?php echo __DIR_NAME__ . "logout.php" ?>" class="nav-link">Cerrar sesión</a>
+                                <a href="<?php echo $__DIR_NAME__ . "logout.php" ?>" class="nav-link">Cerrar sesión</a>
                             </li>
                         <?php
                         } else { ?>
                             <li class="nav-item">
-                                <a href="<?php echo __DIR_NAME__ . "logout.php" ?>" class="nav-link">Cerrar sesión</a>
+                                <a href="<?php echo $__DIR_NAME__ . "logout.php" ?>" class="nav-link">Cerrar sesión</a>
                             </li>
                         <?php
                         }
