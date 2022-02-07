@@ -16,6 +16,7 @@ foreach ($data->viajes as $viaje){
         array_push($viajes, $viaje);
     //}
 }
+var_dump($viajes);
 
 $_SESSION['viajes_encontrados'] = $viajes;
 header('Location: ../../index.php');
