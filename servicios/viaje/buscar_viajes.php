@@ -17,8 +17,7 @@ foreach ($data->data->viajes as $viaje){
 }
 
 $_SESSION['viajes_encontrados'] = $viajes;
-
-$count = count($array);
+$count = count($viajes);
 
 if ($count == 0) {
     $msg = "No se han encontrado resultados.";
