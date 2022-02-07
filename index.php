@@ -46,7 +46,6 @@ include 'includes/header.php';
 <?php
     if (isset($_SESSION['viajes_encontrados']) && !empty($_SESSION['viajes_encontrados'])) {
         $viajes = $_SESSION['viajes_encontrados'];
-        var_dump($viajes);
     } else {
         unset($_SESSION['viajes_encontrados']);
         $res = file_get_contents("http://blablacariw.herokuapp.com/travels");
@@ -85,7 +84,7 @@ include 'includes/header.php';
                     </tr>
 
                 <?php
-                    //unset($_SESSION['viajes_encontrados']);
+                    unset($_SESSION['viajes_encontrados']);
                 } ?>
             </table>
         </section>
