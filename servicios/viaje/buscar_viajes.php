@@ -16,6 +16,6 @@ $res = file_get_contents("http://blablacariw.herokuapp.com/travels?origen=" . $o
 $data = json_decode($res, true);
 
 $_SESSION['viajes_encontrados'] = $data->data->viajes;
-echo $_SESSION['viajes_encontrados'];
+var_dump($_SESSION['viajes_encontrados']);
 header('Location: ../../index.php');
 ?>
