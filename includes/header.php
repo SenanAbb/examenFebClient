@@ -1,6 +1,6 @@
 <?php 
-    if (getenv('CLIENT'))
-    $__DIR_NAME__ =   getenv('CLIENT');
+    if (true)
+    $__DIR_NAME__ =   'https://blablacarclient.herokuapp.com/';
     else $__DIR_NAME__ =  'https://localhost.com/'; ?>
 
 <!DOCTYPE html>
