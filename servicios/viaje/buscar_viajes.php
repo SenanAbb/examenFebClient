@@ -11,7 +11,7 @@ $data = json_decode($res);
 $viajes = array();
 
 foreach ($data->data->viajes as $viaje){
-    if (empty($fecha) || (!empty($fecha) && $fecha === $viaje->fecha_salida)){
+    if (empty($fecha) || (!empty($fecha) && gmdate("d-m-Y", $fecha) === gmdate("d-m-Y", $viaje->fecha_salida))){
         array_push($viajes, $viaje);
     }
 }
