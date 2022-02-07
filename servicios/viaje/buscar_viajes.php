@@ -19,7 +19,7 @@ foreach ($data->data->viajes as $viaje){
 $_SESSION['viajes_encontrados'] = $viajes;
 $count = count($viajes);
 
-$espacios = "                                                        ";
+$espacios = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 
 if ($count == 0) {
     $msg = $espacios."No se han encontrado resultados.";
