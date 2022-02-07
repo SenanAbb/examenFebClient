@@ -1,5 +1,5 @@
 <?php 
-    if (getenv('CLIENTE'))
+    if (getenv('CLIENT'))
     $__DIR_NAME__ =   getenv('CLIENT');
     else $__DIR_NAME__ =  'https://localhost.com/'; ?>
 
