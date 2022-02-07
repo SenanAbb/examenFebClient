@@ -17,5 +17,5 @@ $data = json_decode($res, true);
 
 $_SESSION['viajes_encontrados'] = $data->data->viajes;
 var_dump($_SESSION['viajes_encontrados']);
-header('Location: ../../index.php');
+//header('Location: ../../index.php');
 ?>
