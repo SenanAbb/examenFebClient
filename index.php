@@ -25,7 +25,6 @@ if (isset($_SESSION['usuario'])) {
     }
     error_reporting(E_ERROR | E_PARSE);
 }
-echo getenv('CLIENT');
 
 include 'includes/header.php';
 
