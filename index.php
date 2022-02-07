@@ -44,6 +44,11 @@ include 'includes/header.php';
 
 <!-- Viajes encontrados -->
 <?php
+    if (isset($_SESSION['msgBusqueda'])) {
+        echo $_SESSION['msgBusqueda'];
+        unset($_SESSION['msgBusqueda']);
+    }
+
     if (isset($_SESSION['viajes_encontrados']) && !empty($_SESSION['viajes_encontrados'])) {
         $viajes = $_SESSION['viajes_encontrados'];
     } else {
