@@ -1,9 +1,8 @@
 <?php
     session_start();
-    $res = file_get_contents("https://blablacariw.herokuapp.com/conversaciones/".$_GET['id']);
+    $res = file_get_contents("https://blablacariw.herokuapp.com/conversations/".$_GET['id']);
     $data = json_decode($res);
-    // $resViajes = file_get_contents("https://blablacariw.herokuapp.com/listaviajes");
-    // $dataViajes = json_decode($resViajes);
+    
 ?>
 
 <head><link rel="stylesheet" href="../css/styles.css"></head>
