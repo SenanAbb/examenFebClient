@@ -1,5 +1,6 @@
 <?php
 require_once '../../vendor/autoload.php';
+include '../../funciones/verify.php';
 session_start();
 
 $clienteID = '355043429392-p0keh6com6lldp10dkdificgl44f2unc.apps.googleusercontent.com';
@@ -22,19 +23,9 @@ if (isset($_GET['code'])) {
     $google_info = $gauth->userinfo->get();
 
     // Comprobamos el token en la API
-    $url = 'http://blablacarclient.herokuapp.com/users/verify/' . $email;
+    $isVerified = verify($token, $google_info->email);
 
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, $url);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Authorization: ' . $token['id_token']));
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-
-    $output = curl_exec($ch);
-    curl_close($ch);
-    $result = json_decode($output);
-
-    if ($result->data->isVerified) {
+    if ($isVerified) {
         $original = array(
             "nombre" => $google_info->givenName,
             "apellido" => $google_info->familyName,
@@ -54,9 +45,7 @@ if (isset($_GET['code'])) {
         // Redirijo a index
         header('Location: /index.php');
     } else {
-        $_SESSION['msg'] = 'Login denegado';
-        var_dump($result);
-        exit;
+        $_SESSION['msg'] = 'Login denegado' . $isVerified;
         header('Location: ../../login.php');
     }
 } else {
