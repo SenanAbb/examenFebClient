@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $data = array(
         "id_pasajeros" => [],
-        "id_conductor" => trim($_POST['id_conductor']),
+        "id_conductor" => trim($_SESSION['usuario']->_id),
         "fecha_salida" => strtotime($_POST['fecha_salida']),
         "hora_salida" => strtotime($_POST['hora_salida']),
         "lugar_salida" => trim($_POST['lugar_salida']),
