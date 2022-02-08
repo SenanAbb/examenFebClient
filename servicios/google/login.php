@@ -14,8 +14,6 @@ $client->setClientSecret($clientSecret);
 $client->setRedirectUri($redirectUrl);
 $client->addScope('profile');
 $client->addScope('email');
-var_dump($client);
-exit;
 
 if (isset($_GET['code'])) {
     $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
@@ -26,6 +24,9 @@ if (isset($_GET['code'])) {
 
     // Comprobamos el token en la API
     $isVerified = verify($token, $google_info->email);
+
+    var_dump('aqui');
+
     if ($isVerified) {
         $original = array(
             "nombre" => $google_info->givenName,
