@@ -34,9 +34,11 @@ if (isset($_GET['code'])) {
     curl_close($ch);
     $result = json_decode($output);
 
-
-
     var_dump($result->data->isVerified);
+    var_dump($result);
+    var_dump($url);
+
+
     exit;
 
     if ($result->data->isVerified) {
