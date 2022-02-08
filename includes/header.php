@@ -35,6 +35,10 @@ else $__DIR_NAME__ =  'http://localhost/'; ?>
                         </li>
                         <?php
 
+                        if (!isset($_SESSION['token'])) {
+                            header('Location: /login.php');
+                        }
+
                         if (isset($_SESSION['token']) && isset($_SESSION['admin'])) {
                         ?>
                             <li class="nav-item">
