@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+var_dump($_SESSION);
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $data = file_get_contents("https://blablacariw.herokuapp.com/users?email=" . $_POST['email']);
     $user = json_decode($data);
@@ -44,15 +46,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div class="login-box">
         <div class="login-card">
             <p class="login-text">Inicio de sesión</p>
-                <form action="login.php" method="POST">
+            <!-- <form action="login.php" method="POST">
                 <div class="login-inputs">
                     <div class="login-input">
                         <label for="email">Email</label>
-                        <input type="text" name="email" required>
+                        <input type="text" name="email">
                     </div>
                     <div class="login-input">
                         <label for="password">Contraseña</label>
-                        <input type="password" name="password" required>
+                        <input type="password" name="password">
                     </div>
                 </div>
 
@@ -61,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <button onclick="window.location.href='./servicios/google/login.php'" class="button red-button">Google</a>
                 </div>
             </form>
-            <a href="./registro.php">Registrarse</a>
+            <a href="./registro.php">Registrarse</a> -->
             <div class="login-botones">
                 <button onclick="window.location.href='./servicios/google/login.php'" class="button red-button">Google</a>
             </div>
