@@ -25,7 +25,7 @@ if (isset($_GET['code'])) {
     // Comprobamos el token en la API
     $isVerified = verify($token, $google_info->email);
 
-    if ($result->data->isVerified === true) {
+    if ($isVerified) {
         $original = array(
             "nombre" => $google_info->givenName,
             "apellido" => $google_info->familyName,
