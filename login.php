@@ -1,10 +1,10 @@
 <?php
+session_start();
 if (isset($_SESSION['msg'])) {
     echo $_SESSION['msg'];
     unset($_SESSION['msg']);
 }
 
-session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $data = file_get_contents("https://blablacariw.herokuapp.com/users?email=" . $_POST['email']);
