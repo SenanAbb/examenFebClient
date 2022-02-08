@@ -1,8 +1,8 @@
 <?php
 
-function verify($token)
+function verify($token, $email)
 {
-    $url = 'http://blablacariw.herokuapp.com/users/verify/';
+    $url = 'http://localhost:3000/users/verify/' . $email;
 
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
