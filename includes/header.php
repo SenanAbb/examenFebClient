@@ -35,6 +35,11 @@ else $__DIR_NAME__ =  'https://localhost.com/'; ?>
                         </li>
                         <?php
 
+                        if (!isset($_SESSION['token'])) {
+                            $email = $_SESSION['usuario']->email;
+                            header('Location: /login.php');
+                        }
+
                         if (isset($_SESSION['token']) && isset($_SESSION['admin'])) {
                         ?>
                             <li class="nav-item">

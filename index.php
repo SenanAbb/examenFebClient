@@ -6,11 +6,6 @@ if (isset($_SESSION['server_msg'])) {
 }
 error_reporting(E_ERROR | E_PARSE);
 
-if (!isset($_SESSION['token'])) {
-    $email = $_SESSION['usuario']->email;
-    header('Location: /login.php');
-}
-
 include 'includes/header.php';
 
 ?>
