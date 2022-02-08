@@ -45,7 +45,7 @@ if (isset($_GET['code'])) {
         // Redirijo a index
         header('Location: /index.php');
     } else {
-        $_SESSION['msg'] = 'Login denegado';
+        $_SESSION['msg'] = 'Login denegado' . $isVerified;
         header('Location: ../../login.php');
     }
 } else {
