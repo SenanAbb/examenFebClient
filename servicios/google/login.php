@@ -22,7 +22,7 @@ if (isset($_GET['code'])) {
     $google_info = $gauth->userinfo->get();
 
     // Comprobamos el token en la API
-    $url = 'http://blablacarclient.herokuapp.com/users/verify/' . $google_info->email;
+    $url = 'http://blablacariw.herokuapp.com/users/verify/' . $google_info->email;
 
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
