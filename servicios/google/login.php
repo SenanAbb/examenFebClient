@@ -1,6 +1,5 @@
 <?php
 require_once '../../vendor/autoload.php';
-include '../../funciones/verify.php';
 session_start();
 
 $clienteID = '355043429392-p0keh6com6lldp10dkdificgl44f2unc.apps.googleusercontent.com';
@@ -56,7 +55,8 @@ if (isset($_GET['code'])) {
         header('Location: /index.php');
     } else {
         $_SESSION['msg'] = 'Login denegado';
-        var_d
+        var_dump($result);
+        exit;
         header('Location: ../../login.php');
     }
 } else {
