@@ -1,8 +1,6 @@
 <?php
 session_start();
 
-var_dump($_SESSION);
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $data = file_get_contents("https://blablacariw.herokuapp.com/users?email=" . $_POST['email']);
     $user = json_decode($data);

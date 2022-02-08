@@ -1,5 +1,6 @@
 <?php
 require_once '../../vendor/autoload.php';
+include '../../funciones/verify.php';
 session_start();
 
 $clienteID = '355043429392-p0keh6com6lldp10dkdificgl44f2unc.apps.googleusercontent.com';
@@ -22,19 +23,7 @@ if (isset($_GET['code'])) {
     $google_info = $gauth->userinfo->get();
 
     // Comprobamos el token en la API
-    $url = 'http://blablacariw.herokuapp.com/users/verify';
-
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, $url);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Authorization: ' . $token['id_token']));
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-
-    $output = curl_exec($ch);
-    $info = curl_getinfo($ch);
-    curl_close($ch);
-    $result = json_decode($output);
-
+    $isVerified = verify($token, $google_info->email);
 
     if ($result->data->isVerified === true) {
         $original = array(
@@ -53,12 +42,10 @@ if (isset($_GET['code'])) {
         $_SESSION['token'] = $token;
         $_SESSION['usuario'] = $usuario;
 
-        var_dump($_SESSION);
-
         // Redirijo a index
         header('Location: /index.php');
     } else {
-        echo 'putt';
+        header('Location: ../../login.php');
     }
 } else {
     header('Location: ' . $client->createAuthUrl());
