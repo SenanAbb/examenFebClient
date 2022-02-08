@@ -1,6 +1,5 @@
 <?php
 require_once '../../vendor/autoload.php';
-include '../../funciones/verify.php';
 session_start();
 
 $clienteID = '355043429392-p0keh6com6lldp10dkdificgl44f2unc.apps.googleusercontent.com';
@@ -35,12 +34,12 @@ if (isset($_GET['code'])) {
     curl_close($ch);
     $result = json_decode($output);
 
-    
 
-    var_dump($result->data->isVerified;);
+
+    var_dump($result->data->isVerified);
     exit;
 
-    if ($result->data->isVerified;) {
+    if ($result->data->isVerified) {
         $original = array(
             "nombre" => $google_info->givenName,
             "apellido" => $google_info->familyName,
