@@ -44,7 +44,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div class="login-box">
         <div class="login-card">
             <p class="login-text">Inicio de sesión</p>
-            <form action="login.php" method="POST">
+            <!--
+                <form action="login.php" method="POST">
                 <div class="login-inputs">
                     <div class="login-input">
                         <label for="email">Email</label>
@@ -60,8 +61,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <button type="submit" class="button blue-button">Iniciar sesión</button>
                     <button onclick="window.location.href='./servicios/google/login.php'" class="button red-button">Google</a>
                 </div>
-            </form>
-            <a href="./registro.php">Registrarse</a>
+            </form> -->
+            <!-- <a href="./registro.php">Registrarse</a> -->
+            <div class="login-botones">
+                <button onclick="window.location.href='./servicios/google/login.php'" class="button red-button">Google</a>
+            </div>
         </div>
     </div>
 </body>

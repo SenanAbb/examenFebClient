@@ -23,25 +23,42 @@ if(isset($_GET['code'])){
     $gauth = new Google_Service_Oauth2($client);
     $google_info = $gauth->userinfo->get();
 
-    $original = array(
-        "nombre" => $google_info->givenName,
-        "apellido" => $google_info->familyName,
-        "email" => $google_info->email
-    );
-
-    $usuario = new stdClass();
-
-    foreach ($original as $key => $value){
-        $usuario->$key = $value;
+    // Comprobamos el token en la API
+    $url = 'http://localhost:3000/users/verify';
+        
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Authorization: ' . $token['id_token']));
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    
+    $output = curl_exec($ch);
+    $info = curl_getinfo($ch);
+    curl_close($ch); 
+    $result = json_decode($output);
+    
+    if ($result->data->isVerified === true) {
+        $original = array(
+            "nombre" => $google_info->givenName,
+            "apellido" => $google_info->familyName,
+            "email" => $google_info->email
+        );
+    
+        $usuario = new stdClass();
+    
+        foreach ($original as $key => $value){
+            $usuario->$key = $value;
+        }
+    
+        // Almaceno en la sesión el login
+        $_SESSION['token'] = $token;
+        $_SESSION['usuario'] = $usuario;
+    
+        // Redirijo a index
+        header('Location: /index.php');
+    }else{
+        echo 'putt';
     }
-
-    // Almaceno en la sesión el login
-    $_SESSION['login'] = true;
-    $_SESSION['google_login'] = true;
-    $_SESSION['usuario'] = $usuario;
-
-    // Redirijo a index
-    header('Location: /index.php');
 
 }else{
     header('Location: ' . $client->createAuthUrl());
