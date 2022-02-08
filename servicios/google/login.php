@@ -25,8 +25,6 @@ if (isset($_GET['code'])) {
     // Comprobamos el token en la API
     $isVerified = verify($token, $google_info->email);
 
-    var_dump('aqui');
-
     if ($isVerified) {
         $original = array(
             "nombre" => $google_info->givenName,
@@ -47,6 +45,7 @@ if (isset($_GET['code'])) {
         // Redirijo a index
         header('Location: /index.php');
     } else {
+        $_SESSION['msg'] = 'Login denegado';
         header('Location: ../../login.php');
     }
 } else {
