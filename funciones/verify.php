@@ -2,7 +2,7 @@
 
 function verify($token, $email)
 {
-    $url = 'http://blablacarclient.herokuapp.com/users/verify/' . $email;
+    $url = 'http://examen-api.herokuapp.com/users/verify/' . $email;
 
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);

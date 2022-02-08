@@ -4,7 +4,7 @@ session_start();
 
 $clienteID = '355043429392-p0keh6com6lldp10dkdificgl44f2unc.apps.googleusercontent.com';
 $clientSecret = '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';
-$redirectUrl = 'http://blablacarclient.herokuapp.com/servicios/google/login.php';
+$redirectUrl = 'http://examen-client.herokuapp.com/servicios/google/login.php';
 
 // Nuevo cliente request a Google
 $client = new Google_Client();
@@ -22,7 +22,7 @@ if (isset($_GET['code'])) {
     $google_info = $gauth->userinfo->get();
 
     // Comprobamos el token en la API
-    $url = 'http://blablacariw.herokuapp.com/users/verify/' . $google_info->email;
+    $url = 'http://examen-api.herokuapp.com/users/verify/' . $google_info->email;
 
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
