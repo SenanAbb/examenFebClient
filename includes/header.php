@@ -1,7 +1,7 @@
 <?php
 if (true)
-    $__DIR_NAME__ =   'https://blablacarclient.herokuapp.com/';
-else $__DIR_NAME__ =  'https://localhost.com/'; ?>
+    $__DIR_NAME__ =   'http://blablacarclient.herokuapp.com/';
+else $__DIR_NAME__ =  'http://localhost/'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
