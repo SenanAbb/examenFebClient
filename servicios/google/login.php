@@ -23,9 +23,9 @@ if (isset($_GET['code'])) {
     $google_info = $gauth->userinfo->get();
 
     // Comprobamos el token en la API
-    $isVerified = verify($token, $google_info->email);
+    $isVerified = verify($token);
 
-    if ($isVerified) {
+    if ($result->data->isVerified === true) {
         $original = array(
             "nombre" => $google_info->givenName,
             "apellido" => $google_info->familyName,
