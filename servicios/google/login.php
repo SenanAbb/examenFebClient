@@ -23,12 +23,19 @@ if (isset($_GET['code'])) {
     $google_info = $gauth->userinfo->get();
 
     // Comprobamos el token en la API
-    $isVerified = verify($token, $google_info->email);
+    $url = 'http://blablacarclient.herokuapp.com/users/verify/' . $email;
 
-    var_dump($isVerified);
-    exit;
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Authorization: ' . $token['id_token']));
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
-    if ($isVerified) {
+    $output = curl_exec($ch);
+    curl_close($ch);
+    $result = json_decode($output);
+
+    if ($result->data->isVerified) {
         $original = array(
             "nombre" => $google_info->givenName,
             "apellido" => $google_info->familyName,
