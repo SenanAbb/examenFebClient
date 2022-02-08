@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (isset($_SESSION['login'])) {
+if (isset($_SESSION['usuario']) && isset($_SESSION['token'])) {
     $user = (array) $_SESSION['usuario'];
     $resViajes = file_get_contents("https://blablacariw.herokuapp.com/travels?driver=" . $user['_id']);
     $dataViajes = json_decode($resViajes);
